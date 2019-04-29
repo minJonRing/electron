@@ -1,0 +1,49 @@
+.history {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.history .video-bg {
+  position: absolute;
+  pointer-events: none;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.history .video-bg .video {
+  position: relative;
+}
+
+.history .shade {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 49, 107, 0.69);
+  z-index: 2;
+}
+
+.history .scroll {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.history .scroll img {
+  position: relative;
+}

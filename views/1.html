@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../assets/css/history.css">
+  <link rel="stylesheet" href="../assets/css/global.css">
+</head>
+<body>
+  <div class="history"  id="history">
+      <div class="video-bg">
+          <video autoplay loop muted class="video">
+              <source :src="video" type="video/mp4">
+          </video>
+      </div>
+      <div class="shade"></div>
+      <div class="scroll wrapper">
+          <img :src="img" alt="" class="content">
+      </div>
+  </div>
+</body>
+<script>
+const { ipcRenderer } = require('electron');
+document.querySelector("div").addEventListener("click", () => {
+    ipcRenderer.send('window-switch',[1]);
+})
+const BScroll = require("better-scroll");
+// const BScroll = require("better-scroll/dist/bscroll.min.js");
+const Vue = require("Vue/dist/vue.js");
+
+let win , winH , imgW;
+let app = new Vue({
+    el:"#history",
+    data:{
+        video:"../assets/img/history/bg.mp4",
+        img:"../assets/img/history/1.png",
+        swiper:"",
+        bgSub:0,
+        imgSub:0,
+        startX:0,
+        endX:0,
+        bgEl:"",
+        tranX:0
+    },
+    mounted(){
+        this.bgEl = document.querySelector(".video");
+        setTimeout(() => {
+            this.handleVideoInit();
+            this.handleScroll();
+        }, 300);
+        
+    },
+    watch:{
+        endX(db){
+            //判断方向
+            let d = db < this.startX ? true:false;
+            //计算当前的位移值
+            let sub = Math.abs(db - this.startX); 
+            //当前位置占总量的百分比
+            let Percentage = Math.floor(sub / this.imgSub * this.bgSub * 0.7); 
+            //获取背景的位移值
+            this.tranX = d? this.tranX + Percentage : this.tranX - Percentage ;
+            //背景位置更新
+            this.bgEl.style.transform = `translateX(-${this.tranX}px)`; 
+            //更新上一次的位移位置
+            this.startX = db;
+        }
+    },
+    methods:{
+        handleVideoInit(){
+            // 获取平面宽度
+            win = document.querySelector(".video-bg");
+            winH = win.clientHeight;
+            // 设置背景视频长宽
+            let video  = document.querySelector(".video");
+            // let vw = video.clientWidth,vh = video.clientHeight;
+            // let avh =  winH * 1.5 , avw = Math.floor(avh / vh * vw);
+            // video.height = avh;
+            // video.width = avw;
+            // 设置视频背景差值
+            this.bgSub = video.clientWidth - winH;
+        },
+        handleScroll(e){
+            // 获取图片
+            let img = document.querySelector(".content");
+            //设置图片长宽
+            // let _h = winH * .8 , _w = imgW = Math.floor(_h / 731 * 8000);
+            // img.style.width = _w + 'px';
+            // img.style.height = _h + 'px';
+            // 设置图片差值
+            this.imgSub = img.clientWidth - winH;
+            setTimeout(() => {
+                this.swiper = new BScroll('.wrapper',{
+                    scrollX:true,
+                    probeType:3,
+                });
+                this.swiper.on("scroll",(e)=>{
+                    //更新本次位移值
+                    this.endX = e.x;
+                })
+            }, 10);
+            
+        }
+    }
+})
+
+</script>
+</html>

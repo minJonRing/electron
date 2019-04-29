@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>isa</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/index.css">
+<body>
+    <div class="index"  id="index">
+        <div class="index-bg">
+            <img :src="bg" alt="">
+        </div>
+        <div :class="['index-home',{active:!isShow}]">
+            <div class="index-logo">
+                <div class="index-logo-box">
+                    <img :src="logo" alt="">
+                </div>
+            </div>
+            <div class="index-nav">
+                <div class="index-nav-left">
+                    <a href="javascript:" :class="['nav-btn','nav-btn-'+item]" v-for="(item,index) in btn1" :key="index" @click.stop="handleShowEdit($event,item)">
+                        <img :src="handleImgUrl(item)" alt="">
+                    </a>
+                </div>
+                <div class="index-out-mid">
+                    <a href="javascript:" class="out-btn"></a>
+                </div>
+                <div class="index-nav-right">
+                    <a href="javascript:" :class="['nav-btn','nav-btn-'+item]" v-for="(item,index) in btn2" :key="index" @click.stop="handleShowEdit($event,item)">
+                        <img :src="handleImgUrl(item)" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div :class="['edit',{active:isShow}]">
+            <div class="edit-logo">
+                <img :src="logoBg" alt="">
+            </div>
+            <div class="edit-box">
+                <img class="edit-box-bg" :src="boxBg" alt="">
+                <div :class="['edit-box-cont',{active:show}]">
+                    <div class="edit-box-left">
+                        <img class="item-logo" :src="btns[active].logo" alt="">
+                        <img :src="btns[active].company" alt="">
+                    </div>
+                    <div class="edit-box-mid">
+                        <img :src="btns[active].desc" alt="">
+                    </div>
+                    <div class="edit-box-right">
+                        <img :src="btns[active].img" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="edit-handle">
+                <a href="javascript:" class="return-btn" @click.stop="handleReturn">
+                    <img :src="returnBg" alt="">
+                </a>
+                <img class="btns-bg" :src="btnBg" alt="">
+                <div class="wrapper">
+                    <div  class="content">
+                        <a href="javascript:" class="item" v-for="(item,index) in btns" :key="index" @click.stop="handleClick($event,index)">
+                            <img :src="handleImgUrl(index-0+1)" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let config = require('./config')
+
+    const { ipcRenderer } = require('electron');
+    document.querySelector("div").addEventListener("click", () => {
+        ipcRenderer.send('window-switch',[1]);
+    })
+
+    const BScroll = require("better-scroll");
+    const Vue = require("Vue/dist/vue.js");
+
+    let app = new Vue({
+      el: '#index',
+      data () {
+          return {
+              bg:"assets/img/index/bg.png",
+              logo:"assets/img/index/logo.png",
+              btn1:[1,2,3,4,5,6,7,8],
+              btn2:[9,10,11,12,13,14,15,16],
+              isShow:false,
+              active:0,
+              // edit
+              // 信息展示背景
+              boxBg:"assets/img/index/info/box-bg.png",
+              // logo
+              logoBg:"assets/img/index/logo.png",
+              // 按钮底板
+              btnBg:"assets/img/index/info/btn-bg.png",
+              // 按钮
+              btns:[],
+              // 返回按钮
+              returnBg:"assets/img/index/info/return-btn.png",
+              swiper:"",
+              // 
+              show:true
+          }
+      },
+      created(){
+        this.btns = config.db;
+      },
+      mounted(){
+        this.handleInit();
+      },
+      watch:{
+        active(db){
+            let num = db - 2;
+            if(num > 0){
+                if(num > 10){
+                    this.swiper.scrollTo(-1680,0,600)
+                }else{
+                    this.swiper.scrollTo(-168*num + 84,0,600)
+                }
+            }else{
+                this.swiper.scrollTo(0,0,0)
+            }
+            this.show = false;
+            setTimeout(() => {
+                this.show = true;
+            }, 300);
+        },
+      },
+      methods:{
+          handleImgUrl(i){
+              return `assets/img/index/nav/${i}.png`;
+          },
+          handleShowEdit(e,i){
+              this.active = i - 1;
+              this.isShow = true;
+          },
+          handleInit(){
+              this.swiper = new BScroll('.wrapper',{
+                  scrollX:true,
+                  scrollY:false,
+                  click:true,
+                  tap:true,
+                  bounceTime:600,
+                  probeType:3,
+              });
+              this.swiper.on("scroll",(e)=>{
+                  //更新本次位移值
+              })
+          },
+          handleClick(e,i){
+              this.active = i;
+          },
+          handleReturn(){
+            this.isShow = false;
+          }
+      }
+  })
+  </script>
+</html>

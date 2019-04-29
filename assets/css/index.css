@@ -1,0 +1,360 @@
+.index {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.index .index-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.index .index-home {
+  position: relative;
+  height: 100%;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.index .index-home .index-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.index .index-home .index-logo .index-logo-box {
+  margin: 0 auto;
+  width: 1290px;
+}
+
+.index .index-home .index-logo .index-logo-box img {
+  width: 100%;
+  transform: translateY(-352px);
+}
+
+.index .index-home .index-nav {
+  position: absolute;
+  width: 2225px;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  left: 50%;
+  margin-left: -1112.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.index .index-home .index-nav .index-nav-left,
+.index .index-home .index-nav .index-nav-right {
+  position: relative;
+  width: 1070px;
+  height: 430px;
+  font-size: 0;
+}
+
+.index .index-home .index-nav .index-nav-left {
+  opacity: 0;
+  transform: matrix(1, 0, 0, 1, -40, 0);
+}
+
+.index .index-home .index-nav .index-nav-right {
+  opacity: 0;
+  transform: matrix(1, 0, 0, 1, 40, 0);
+}
+
+.index .index-home .index-nav .nav-btn {
+  position: absolute;
+  display: inline-block;
+  height: 162px;
+}
+
+.index .index-home .index-nav .nav-btn img {
+  height: 100%;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-1 {
+  top: 180px;
+  left: 0;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-2 {
+  top: 252px;
+  left: 166px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-3 {
+  top: 89px;
+  left: 249px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-4 {
+  top: 183px;
+  left: 405px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-5 {
+  top: 39px;
+  left: 512px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-6 {
+  top: 136px;
+  left: 660px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-7 {
+  top: 4px;
+  left: 780px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-8 {
+  top: 120px;
+  left: 908px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-16 {
+  top: 180px;
+  right: 0;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-15 {
+  top: 252px;
+  right: 166px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-14 {
+  top: 89px;
+  right: 249px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-13 {
+  top: 183px;
+  right: 405px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-12 {
+  top: 39px;
+  right: 512px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-11 {
+  top: 136px;
+  right: 660px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-10 {
+  top: 4px;
+  right: 780px;
+}
+
+.index .index-home .index-nav .nav-btn.nav-btn-9 {
+  top: 120px;
+  right: 908px;
+}
+
+.index .index-home .index-nav .index-out-mid {
+  width: 85px;
+}
+
+.index .index-home.active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.index .index-home.active .index-nav .index-nav-left,
+.index .index-home.active .index-nav .index-nav-right {
+  transition-duration: 600ms;
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.index .index-edit {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+}
+
+.index .edit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.index .edit.active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.index .edit.active .edit-box {
+  transition-duration: 600ms;
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.index .edit.active .edit-handle {
+  transition-duration: 600ms;
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.index .edit .edit-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1290px;
+}
+
+.index .edit .edit-logo img {
+  width: 100%;
+  transform: translate(302px, -400px);
+}
+
+.index .edit .edit-box {
+  position: absolute;
+  width: 2222px;
+  left: 50%;
+  bottom: 211px;
+  margin-left: -1111px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: matrix(1, 0, 0, 1, 40, 0);
+}
+
+.index .edit .edit-box .edit-box-bg {
+  width: 100%;
+}
+
+.index .edit .edit-box .edit-box-cont {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 40px;
+}
+
+.index .edit .edit-box .edit-box-cont .edit-box-left {
+  width: 420px;
+  opacity: 0;
+  transform: matrix(1, 0, 0, 1, -40, 0);
+}
+
+.index .edit .edit-box .edit-box-cont .edit-box-left img {
+  max-width: 100%;
+}
+
+.index .edit .edit-box .edit-box-cont .edit-box-left img.item-logo {
+  width: 294px;
+  margin: 0 auto 40px;
+}
+
+.index .edit .edit-box .edit-box-cont .edit-box-mid {
+  width: 970px;
+  opacity: 0;
+  transform: matrix(1, 0, 0, 1, 0, -40);
+}
+
+.index .edit .edit-box .edit-box-cont .edit-box-mid img {
+  width: 100%;
+}
+
+.index .edit .edit-box .edit-box-cont .edit-box-right {
+  width: 670px;
+  opacity: 0;
+  transform: matrix(1, 0, 0, 1, 40, 0);
+}
+
+.index .edit .edit-box .edit-box-cont .edit-box-right img {
+  width: 100%;
+}
+
+.index .edit .edit-box .edit-box-cont.active .edit-box-left,
+.index .edit .edit-box .edit-box-cont.active .edit-box-mid,
+.index .edit .edit-box .edit-box-cont.active .edit-box-right {
+  opacity: 1;
+  transition-duration: 600ms;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.index .edit .edit-handle {
+  position: absolute;
+  width: 1024px;
+  height: 144px;
+  left: 50%;
+  margin-left: -512px;
+  bottom: 30px;
+  opacity: 0;
+  transform: matrix(1, 0, 0, 1, 0, 40);
+}
+
+.index .edit .edit-handle .return-btn {
+  position: absolute;
+  width: 144px;
+  left: -211px;
+  top: 38px;
+}
+
+.index .edit .edit-handle .return-btn img {
+  width: 100%;
+}
+
+.index .edit .edit-handle .btns-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.index .edit .edit-handle .wrapper {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 72px;
+}
+
+.index .edit .edit-handle .wrapper .content {
+  width: 2704px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.index .edit .edit-handle .wrapper .content .item {
+  flex-shrink: 0;
+  flex-grow: 0;
+  height: 130px;
+  margin: 0 20px;
+}
+
+.index .edit .edit-handle .wrapper .content .item img {
+  height: 100%;
+}
