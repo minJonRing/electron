@@ -1,0 +1,222 @@
+.click {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.click .bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.click .box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.click .box .head {
+  position: absolute;
+  width: 1360px;
+  top: 0;
+  left: 50%;
+  margin-left: -680px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.click .box .head .title {
+  width: 827px;
+  transform: translateY(-354px);
+}
+
+.click .box .head .desc {
+  position: absolute;
+  top: 195px;
+  max-width: 100%;
+}
+
+.click .box .cont {
+  position: absolute;
+  top: 312px;
+  width: 2830px;
+  min-height: 741px;
+  left: 50%;
+  margin-left: -1415px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.click .box .cont .bg {
+  width: 100%;
+  min-height: 741px;
+  overflow: hidden;
+}
+
+.click .box .cont .bg img {
+  width: 100%;
+}
+
+.click .box .cont .one {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.click .box .cont .one .swiper-container {
+  height: 100%;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-1 {
+  position: relative;
+  padding: 0 370px 0 288px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-1 .jy {
+  position: absolute;
+  height: 90px;
+  top: 80px;
+  left: 103px;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-1 .swiper-1-1 {
+  width: 700px;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-1 .swiper-1-2 {
+  width: 760px;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-1 .swiper-1-3 {
+  width: 570px;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-2 {
+  padding: 0 140px 0 135px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-2 .swiper-2-1 {
+  width: 675px;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-2 .swiper-2-2 {
+  width: 893px;
+  text-align: center;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-2 .swiper-2-2 img {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-2 .swiper-2-2 img.img1 {
+  width: 880px;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-2 .swiper-2-2 img.img2 {
+  margin-top: 26px;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-2 .swiper-2-3 {
+  width: 740px;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-2 .swiper-2-3 img {
+  max-width: 100%;
+}
+
+.click .box .cont .one .swiper-container .swiper-slide-2 .swiper-2-3 img.img2 {
+  margin-top: 20px;
+}
+
+.click .box .cont .one .swiper-container .swiper-pagination-bullet {
+  width: 18px;
+  height: 18px;
+  border-radius: 0;
+  background-color: #fff;
+  border: 1px #c0d4e7 solid;
+}
+
+.click .box .cont .one .swiper-container .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #b3eaff;
+}
+
+.click .box .cont .tow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0 325px 0 287px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.click .box .cont .tow .tz {
+  position: absolute;
+  height: 90px;
+  top: 80px;
+  left: 103px;
+}
+
+.click .box .cont .tow .img-1 {
+  width: 570px;
+}
+
+.click .box .cont .tow .img-2 {
+  width: 830px;
+}
+
+.click .box .cont .tow .img-3 {
+  width: 570px;
+}
+
+.click .box .bottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 480px;
+  height: 200px;
+  margin-left: -240px;
+  overflow: hidden;
+}
+
+.click .box .bottom img {
+  width: 100%;
+}
+
+.click .box .bottom .btn-1 {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.click .box .bottom .btn-2 {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  right: 0;
+}

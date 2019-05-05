@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/5g-slide.css">
+</head>
+<body>
+    <div class="g5-slide" id="g5-slide">
+        <div class="bg">
+            <img class="bg-img" src="../../assets/img/5g/bg.png" alt="">
+        </div>
+        <div class="box">
+            <img class="slide-img" :src="slideimg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+const { ipcRenderer } = require('electron');
+document.querySelector("div").addEventListener("click", () => {
+    ipcRenderer.send('window-switch',[1]);
+})
+const BScroll = require("better-scroll");
+// const BScroll = require("better-scroll/dist/bscroll.min.js");
+const Vue = require("Vue/dist/vue.js");
+
+let app = new Vue({
+    el:"#g5-slide",
+    data:{
+        // win
+        winW:0,
+        // img
+        slideimg:"../../assets/img/5g/slide/1.png",
+        // el
+        swiper:"",
+        bgSub:0,
+        imgSub:0,
+        startX:0,
+        endX:0,
+        bgEl:"",
+        tranX:0
+    },
+    create(){
+    },
+    mounted() {
+        this.bgEl = document.querySelector(".bg-img");
+        this.winW = document.querySelector(".g5-slide").clientWidth;
+        setTimeout(() => {
+            this.handleBgInit();
+            this.handleScroll();
+        }, 300);
+        // 判断是5G大事件 还是 5g发展情况
+        let id = window.location.search.replace(/(\?id=)/,'');
+        this.slideimg = id == 1?'../../assets/img/5g/slide/1.png':'../../assets/img/5g/slide/1.png';
+    },
+    watch: {
+        endX(db){
+            //判断方向
+            let d = db < this.startX ? true:false;
+            //计算当前的位移值
+            let sub = Math.abs(db - this.startX); 
+            //当前位置占总量的百分比
+            let Percentage = Math.floor(sub / this.imgSub * this.bgSub * 0.7); 
+            //获取背景的位移值
+            this.tranX = d? this.tranX + Percentage : this.tranX - Percentage ;
+            //背景位置更新
+            this.bgEl.style.transform = `translateX(-${this.tranX}px)`; 
+            //更新上一次的位移位置
+            this.startX = db;
+        }
+    },
+    methods: {
+        handleBgInit(){
+            // 设置背景视频长宽
+            let slideimg  = document.querySelector(".bg-img");
+            this.bgSub = slideimg.clientWidth - this.winW;
+        },
+        handleScroll(e){
+            // 获取图片
+            let img = document.querySelector(".slide-img");
+            this.imgSub = img.clientWidth - this.winW;
+            setTimeout(() => {
+                this.swiper = new BScroll('.box',{
+                    scrollX:true,
+                    probeType:3,
+                });
+                this.swiper.on("scroll",(e)=>{
+                    //更新本次位移值
+                    this.endX = e.x;
+                })
+            }, 10);
+            
+        }
+    },
+})
+</script>
+</html>

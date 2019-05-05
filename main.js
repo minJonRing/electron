@@ -35,7 +35,8 @@ function initialize () {
 
     mainWindow = new BrowserWindow(windowOptions)
     // mainWindow.setFullScreen(true);
-    mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
+    // mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
+    mainWindow.loadURL(path.join('file://', __dirname, '/views/2.html'))
     // mainWindow.loadURL('http://www.baidu.com')
 
     // Launch fullscreen with DevTools open, usage: npm run debug

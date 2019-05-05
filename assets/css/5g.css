@@ -1,0 +1,89 @@
+.g5 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.g5 .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.g5 .box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.g5 .box .logo {
+  position: absolute;
+  top: 85px;
+  left: 50%;
+  margin-left: -408px;
+}
+
+.g5 .box .nav {
+  position: absolute;
+  top: 560px;
+  left: 50%;
+  width: 1520px;
+  margin-left: -760px;
+}
+
+.g5 .box .nav .nav-btn {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.g5 .box .nav .nav-btn .icon {
+  width: 225px;
+}
+
+.g5 .box .nav .nav-btn .icon img {
+  display: block;
+  width: 100%;
+}
+
+.g5 .box .nav .nav-btn .font {
+  height: 60px;
+  margin-top: 40px;
+}
+
+.g5 .box .nav .nav-btn .font img {
+  height: 60px;
+}
+
+.g5 .box .nav .nav-btn.nav-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+}
+
+.g5 .box .nav .nav-btn.nav-2 {
+  position: absolute;
+  top: 255px;
+  left: 50%;
+  width: 600px;
+  margin-left: -300px;
+}
+
+.g5 .box .nav .nav-btn.nav-3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 440px;
+}

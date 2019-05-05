@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>机遇与挑战</title>
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/js/swiper.min.css">
+    <link rel="stylesheet" href="../../assets/css/5g-click.css">
+</head>
+<body>
+    <div class="click" id="click">
+        <div class="bg">
+            <img src="../../assets/img/5g/click/bg.png" alt="">
+        </div>
+        <div class="box">
+            <div class="head">
+                <img class="title" src="../../assets/img/5g/click/title.png" alt="">
+                <img class="desc" src="../../assets/img/5g/click/desc.png" alt="">
+            </div>
+            <div class="cont">
+                <div class="bg">
+                    <img src="../../assets/img/5g/click/box.png" alt="">
+                </div>
+                <div class="one" v-show="active == 1">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide swiper-slide-1">
+                                <img class="jy" src="../../assets/img/5g/click/1/jy.png" alt="">
+                                <img class="swiper-1-1" src="../../assets/img/5g/click/1/1.png" alt="">
+                                <img class="swiper-1-2" src="../../assets/img/5g/click/1/2.png" alt="">
+                                <img class="swiper-1-3" src="../../assets/img/5g/click/1/3.png" alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-2">
+                                <img class="swiper-2-1" src="../../assets/img/5g/click/2/1.png" alt="">
+                                <div class="swiper-2-2">
+                                    <img class="img1" src="../../assets/img/5g/click/2/2.png" alt="">
+                                    <img class="img2" src="../../assets/img/5g/click/2/3.png" alt="">
+                                </div>
+                                <div class="swiper-2-3">
+                                    <img class="img1" src="../../assets/img/5g/click/2/4.png" alt="">
+                                    <img class="img2" src="../../assets/img/5g/click/2/5.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div class="tow" v-show="active == 2">
+                    <img class="tz" src="../../assets/img/5g/click/3/tz.png" alt="">
+                    <img class="img-1" src="../../assets/img/5g/click/3/1.png" alt="">
+                    <img class="img-2" src="../../assets/img/5g/click/3/2.png" alt="">
+                    <img class="img-3" src="../../assets/img/5g/click/3/3.png" alt="">
+                </div>
+            </div>
+            
+            <div class="bottom">
+                <img :src="btnBg" alt="">
+                <a href="javascript:" class="btn-1" @click.stop="handleClick($event,1)"></a>
+                <a href="javascript:" class="btn-2" @click.stop="handleClick($event,2)"></a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../assets/js/swiper.min.js"></script>
+<script>
+const { ipcRenderer } = require('electron');
+document.querySelector("div").addEventListener("click", () => {
+    ipcRenderer.send('window-switch',[1]);
+})
+const BScroll = require("better-scroll");
+// const BScroll = require("better-scroll/dist/bscroll.min.js");
+const Vue = require("Vue/dist/vue.js");
+
+let app = new Vue({
+    el:"#click",
+    data:{
+        btnBg:"../../assets/img/5g/click/btn1.png",
+        active:1,
+        swiper:""
+    },
+    mounted () {
+        this.handleSwiper();
+    },
+    methods: {
+        handleSwiper(){
+            this.swiper =  new Swiper('.swiper-container', {
+                loop:true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable:true
+                },
+            })
+        },
+        handleClick(e,i){
+            this.btnBg = `../../assets/img/5g/click/btn${i}.png`;
+            this.active = i;
+        }
+    },
+})
+</script>
+</html>
